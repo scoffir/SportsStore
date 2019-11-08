@@ -9,6 +9,7 @@ namespace SportsStore
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<City> Cities { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -20,6 +21,7 @@ namespace SportsStore
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new CityConfiguration());
         }
     }
 }
