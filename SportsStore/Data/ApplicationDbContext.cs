@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SportsStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,7 @@ namespace SportsStore
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Product> Products { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -17,6 +19,7 @@ namespace SportsStore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
         }
     }
 }
