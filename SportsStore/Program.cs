@@ -6,7 +6,10 @@ namespace SportsStore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var context = new ApplicationDbContext();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+            Console.WriteLine("Database Created");
         }
     }
 }
